@@ -1,4 +1,4 @@
-import { DataVaultReceiver } from "./DataVaultReceiver";
+import { DataVaultReceiver } from "./ScriptEventReceiver";
 import { DynamicPropertyStorage } from "./DynamicPropertyStorage";
 
 export class DataVaultManager {
