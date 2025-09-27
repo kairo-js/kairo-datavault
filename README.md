@@ -1,19 +1,10 @@
-# Kairo-template
-This repository is a template based on the specifications of the Kairo addon linked below.  
-https://github.com/shizuku86/Kairo
+# Kairo-DataVault
+This behavior pack serves as the persistent data vault for the Kairo. It is a dedicated storage module, designed to be immutable and stable across all future versions of Minecraft. Other addons interact with it exclusively via script events to store and retrieve shared data.
 
-After cloning, run the following command to install node_modules:  
-- npm install
-
-After editing the lines ending with # in scripts/properties.ts appropriately and resolving errors,  
-execute the following command in the terminal:  
-- npm run build
-
-When this command is executed, the following operations will be performed:  
-- manifest.json is automatically generated in BP/ and RP/ from the information in properties  
-- TypeScript files in scripts/ are built as JavaScript into BP/scripts  
-- The pack_icon.png at the project root is copied into both BP/ and RP/  
-- The completed BP/ and RP/ are copied into Minecraft’s development folder
+## Supported Minecraft Script API
+Kairo is built using the stable Script API:
+- `@minecraft/server` - v2.1.0
+- `@minecraft/server-ui` - v2.0.0
 
 ## Requirements
 - Node.js (for development and TypeScript build)
