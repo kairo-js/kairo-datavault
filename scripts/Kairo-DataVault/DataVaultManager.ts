@@ -17,8 +17,8 @@ export class DataVaultManager {
         return DataVaultManager.instance;
     }
 
-    public handleScriptEvent(message: string): void {
-        this.dataVaultReceiver.handleScriptEvent(message);
+    public handleOnScriptEvent(message: string): void {
+        this.dataVaultReceiver.handleOnScriptEvent(message);
     }
 
     public saveData(addonId: string, key: string, value: string): void {

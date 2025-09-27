@@ -9,7 +9,7 @@ export class DataVaultReceiver {
         return new DataVaultReceiver(dataVaultManager);
     }
 
-    public handleScriptEvent(message: string): void {
+    public handleOnScriptEvent(message: string): void {
         const splitMessage = message.split(" ");
         const command = splitMessage[0];
         const addonId = splitMessage[1];

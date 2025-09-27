@@ -28,7 +28,7 @@ Kairo.onScriptEvent = (message: string) => {
      * Write the handler logic for when the addon receives a scriptEvent
      * The only available property is { message }
      */
-    DataVaultManager.getInstance().handleScriptEvent(message);
+    DataVaultManager.getInstance().handleOnScriptEvent(message);
 };
 
 main();
