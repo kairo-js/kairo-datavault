@@ -1,54 +1,39 @@
 import { system } from "@minecraft/server";
 import { AddonInitializeReceive } from "./AddonInitializeReceive";
 import { AddonInitializeResponse } from "./AddonInitializeResponse";
-import type { Kairo } from "../../..";
-import type { AddonProperty } from "../../AddonPropertyManager";
-
 export class AddonInitializer {
-    private registrationNum: number = 0;
-
-    private readonly receive: AddonInitializeReceive;
-    private readonly response: AddonInitializeResponse;
-
-    private constructor(private readonly kairo: Kairo) {
+    constructor(kairo) {
+        this.kairo = kairo;
+        this.registrationNum = 0;
         this.receive = AddonInitializeReceive.create(this);
         this.response = AddonInitializeResponse.create(this);
     }
-
-    public static create(kairo: Kairo): AddonInitializer {
+    static create(kairo) {
         return new AddonInitializer(kairo);
     }
-
-    public subscribeClientHooks() {
+    subscribeClientHooks() {
         system.afterEvents.scriptEventReceive.subscribe(this.receive.handleScriptEvent);
     }
-
-    public unsubscribeClientHooks() {
+    unsubscribeClientHooks() {
         system.afterEvents.scriptEventReceive.unsubscribe(this.receive.handleScriptEvent);
     }
-
-    public getSelfAddonProperty(): AddonProperty {
+    getSelfAddonProperty() {
         return this.kairo.getSelfAddonProperty();
     }
-
-    public refreshSessionId(): void {
+    refreshSessionId() {
         return this.kairo.refreshSessionId();
     }
-
-    public sendResponse(): void {
+    sendResponse() {
         const selfAddonProperty = this.getSelfAddonProperty();
         this.response.sendResponse(selfAddonProperty);
     }
-
-    public setRegistrationNum(num: number): void {
+    setRegistrationNum(num) {
         this.registrationNum = num;
     }
-
-    public getRegistrationNum(): number {
+    getRegistrationNum() {
         return this.registrationNum;
     }
-
-    public subscribeReceiverHooks(): void {
+    subscribeReceiverHooks() {
         this.kairo.subscribeReceiverHooks();
     }
 }
