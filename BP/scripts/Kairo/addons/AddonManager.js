@@ -21,8 +21,8 @@ export class AddonManager {
     _deactivateAddon() {
         this.kairo._deactivateAddon();
     }
-    _scriptEvent(message) {
-        this.kairo._scriptEvent(message);
+    _scriptEvent(data) {
+        this.kairo._scriptEvent(data);
     }
     get isActive() {
         return this._isActive;

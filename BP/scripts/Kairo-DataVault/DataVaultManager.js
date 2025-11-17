@@ -11,8 +11,8 @@ export class DataVaultManager {
         }
         return DataVaultManager.instance;
     }
-    handleScriptEvent(message) {
-        this.dataVaultReceiver.handleScriptEvent(message);
+    handleScriptEvent(data) {
+        this.dataVaultReceiver.handleScriptEvent(data);
     }
     saveData(addonId, key, value) {
         this.dynamicPropertyStorage.save(addonId, key, value);

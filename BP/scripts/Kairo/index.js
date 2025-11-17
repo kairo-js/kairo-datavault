@@ -63,8 +63,8 @@ export class Kairo {
     static addScriptEvent(fn, opt) {
         this._pushSorted(this._seHooks, fn, opt);
     }
-    _scriptEvent(message) {
-        void Kairo._runScriptEvent(message);
+    _scriptEvent(data) {
+        void Kairo._runScriptEvent(data);
     }
     _activateAddon() {
         void Kairo._runActivateHooks();
@@ -98,10 +98,10 @@ export class Kairo {
         }
         this.getInstance().addonManager.setActiveState(false);
     }
-    static async _runScriptEvent(message) {
+    static async _runScriptEvent(data) {
         for (const { fn } of this._seHooks) {
             try {
-                await fn(message);
+                await fn(data);
             }
             catch (e) {
                 system.run(() => console.warn(`[Kairo.onScriptEvent] ${e instanceof Error ? (e.stack ?? e.message) : String(e)}`));
