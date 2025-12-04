@@ -24,8 +24,10 @@ export class DataVaultManager {
         this.dataVaultReceiver.handleScriptEvent(data);
     }
 
-    public saveData(addonId: string, key: string, value: string): void {
-        this.dynamicPropertyStorage.save(addonId, key, value);
+    public saveData(addonId: string, key: string, value: string, type: string): void {
+        const parseValue = type === "string" ? value : JSON.parse(value);
+
+        this.dynamicPropertyStorage.save(addonId, key, parseValue, type);
     }
 
     public loadData(addonId: string, key: string): void {
@@ -35,7 +37,8 @@ export class DataVaultManager {
             commandId: SCRIPT_EVENT_COMMAND_IDS.DATA_LOADED,
             addonId: properties.id,
             key,
-            dataLoaded,
+            data: dataLoaded.data,
+            type: dataLoaded.type,
         });
     }
 }

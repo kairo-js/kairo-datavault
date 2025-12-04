@@ -19,7 +19,7 @@ export class DynamicPropertyStorage {
         return new DynamicPropertyStorage(dataVaultManager);
     }
 
-    public save(addonId: string, key: string, data: string): void {
+    public save(addonId: string, key: string, data: string, type: string): void {
         const prefix = this.makePrefix(addonId, key);
         const totalChunks = Math.ceil((data?.length ?? 0) / this.CHUNK_SIZE);
 
@@ -40,18 +40,21 @@ export class DynamicPropertyStorage {
 
         world.setDynamicProperty(this.countKey(prefix), totalChunks);
         world.setDynamicProperty(this.lenKey(prefix), data.length);
+        world.setDynamicProperty(this.typeKey(prefix), type);
     }
 
-    public load(addonId: string, key: string): string {
+    public load(addonId: string, key: string): { data: string; type: string } {
         const prefix = this.makePrefix(addonId, key);
         const count = this.getCount(prefix);
-        if (!count || count <= 0) return "";
+        if (!count || count <= 0) return { data: "", type: "" };
 
         let result = "";
         for (let i = 0; i < count; i++) {
             result += (world.getDynamicProperty(this.chunkKey(prefix, i)) as string) || "";
         }
-        return result;
+
+        const type = world.getDynamicProperty(this.typeKey(prefix)) as string;
+        return { data: result, type };
     }
 
     public listKeysByAddon(): void {
@@ -127,6 +130,10 @@ export class DynamicPropertyStorage {
 
     private lenKey(prefix: string): string {
         return `${prefix}_len`;
+    }
+
+    private typeKey(prefix: string): string {
+        return `${prefix}_type`;
     }
 
     private makePrefix(addonId: string, key: string): string {
