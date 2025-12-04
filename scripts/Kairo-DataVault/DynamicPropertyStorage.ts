@@ -21,6 +21,12 @@ export class DynamicPropertyStorage {
 
     public save(addonId: string, key: string, data: string, type: string): void {
         const prefix = this.makePrefix(addonId, key);
+        if (type === "null") {
+            this.delete(addonId, key);
+            world.setDynamicProperty(this.typeKey(prefix), "null");
+            return;
+        }
+
         const totalChunks = Math.ceil((data?.length ?? 0) / this.CHUNK_SIZE);
 
         const prevCount = this.getCount(prefix);
@@ -67,6 +73,9 @@ export class DynamicPropertyStorage {
         }
 
         const raw = world.getDynamicProperty(this.chunkKey(prefix, 0));
+        if (raw === undefined) {
+            return { value: null, type: "null" };
+        }
 
         switch (type) {
             case "number":
