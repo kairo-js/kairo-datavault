@@ -7,25 +7,25 @@ export class DataVaultReceiver {
     static create(dataVaultManager) {
         return new DataVaultReceiver(dataVaultManager);
     }
-    handleScriptEvent(data) {
-        if (!DataVaultReceiver.VALID_COMMANDS.has(data.commandId)) {
+    async handleScriptEvent(command) {
+        if (!DataVaultReceiver.VALID_COMMANDS.has(command.commandType)) {
             return;
         }
-        if (!data.addonId) {
-            ConsoleManager.error(`Addon ID missing: ${data}`);
+        if (!command.sourceAddonId) {
+            ConsoleManager.error(`Addon ID missing: ${command}`);
             return;
         }
-        if (!data.key) {
-            ConsoleManager.error(`Key missing: ${data}`);
+        if (!command.data.key) {
+            ConsoleManager.error(`Key missing: ${command}`);
             return;
         }
-        switch (data.commandId) {
+        switch (command.commandType) {
             case SCRIPT_EVENT_COMMAND_IDS.SAVE_DATA:
-                this.dataVaultManager.saveData(data.addonId, data.key, data.value, data.type);
-                break;
+                return this.dataVaultManager.saveData(command.sourceAddonId, command.data.key, command.data.value, command.data.type);
             case SCRIPT_EVENT_COMMAND_IDS.LOAD_DATA:
-                this.dataVaultManager.loadData(data.addonId, data.key);
-                break;
+                return this.dataVaultManager.loadData(command.sourceAddonId, command.data.key);
+            default:
+                return;
         }
     }
 }
