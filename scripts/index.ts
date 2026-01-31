@@ -1,6 +1,6 @@
 import { DataVaultManager } from "./Kairo-DataVault/DataVaultManager";
 import { Kairo } from "./Kairo/index";
-import type { KairoCommand } from "./Kairo/utils/KairoUtils";
+import type { KairoCommand, KairoResponse } from "./Kairo/utils/KairoUtils";
 
 async function main(): Promise<void> {
     Kairo.init(); // client
@@ -22,7 +22,7 @@ Kairo.onDeactivate = () => {
      */
 };
 
-Kairo.onScriptEvent = async (command: KairoCommand) => {
+Kairo.onScriptEvent = async (command: KairoCommand): Promise<void | KairoResponse> => {
     /**
      * ここにはアドオンが scriptEvent を受け取った際の処理を書く
      * 利用できるプロパティは { data: KairoCommand } のみ
