@@ -1,4 +1,4 @@
-import { KairoUtils, type KairoCommand, type KairoResponse } from "../Kairo/utils/KairoUtils";
+import { KairoUtils, type KairoCommand, type KairoResponse } from "../@core/kairo/utils/KairoUtils";
 import { DataVaultReceiver } from "./DataVaultReceiver";
 import { DynamicPropertyStorage } from "./DynamicPropertyStorage";
 

@@ -1,6 +1,6 @@
-import { DataVaultManager } from "./Kairo-DataVault/DataVaultManager";
-import { Kairo } from "./Kairo/index";
-import type { KairoCommand, KairoResponse } from "./Kairo/utils/KairoUtils";
+import { Kairo } from "./@core/kairo";
+import type { KairoCommand, KairoResponse } from "./@core/kairo/utils/KairoUtils";
+import { DataVaultManager } from "./kairo-datavault/DataVaultManager";
 
 async function main(): Promise<void> {
     Kairo.init(); // client
