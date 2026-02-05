@@ -1,5 +1,4 @@
-import { ConsoleManager } from "../@core/kairo/utils/ConsoleManager";
-import type { KairoCommand, KairoResponse } from "../@core/kairo/utils/KairoUtils";
+import { ConsoleManager, type KairoCommand, type KairoResponse } from "@kairo-ts/router";
 import { SCRIPT_EVENT_COMMAND_IDS } from "./constants";
 import type { DataVaultManager } from "./DataVaultManager";
 

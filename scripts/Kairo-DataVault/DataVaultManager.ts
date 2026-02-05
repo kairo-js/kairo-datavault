@@ -1,4 +1,4 @@
-import { KairoUtils, type KairoCommand, type KairoResponse } from "../@core/kairo/utils/KairoUtils";
+import { KairoUtils, type KairoCommand, type KairoResponse } from "@kairo-ts/router";
 import { DataVaultReceiver } from "./DataVaultReceiver";
 import { DynamicPropertyStorage } from "./DynamicPropertyStorage";
 
@@ -35,8 +35,6 @@ export class DataVaultManager {
 
     public async loadData(addonId: string, key: string): Promise<KairoResponse> {
         const dataLoaded = this.dynamicPropertyStorage.load(addonId, key);
-        const value =
-            dataLoaded.type === "string" ? dataLoaded.value : JSON.stringify(dataLoaded.value);
 
         return KairoUtils.buildKairoResponse({ dataLoaded });
     }

@@ -1,6 +1,6 @@
 import { system, world, type Vector3 } from "@minecraft/server";
-import { ConsoleManager } from "../@core/kairo/utils/ConsoleManager";
 import type { DataVaultManager } from "./DataVaultManager";
+import { ConsoleManager } from "@kairo-ts/router";
 
 /**
  * DynamicProperty を用いた大きな文字列の分割保存。
