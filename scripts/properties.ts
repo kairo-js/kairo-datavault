@@ -1,4 +1,4 @@
-import type { KairoAddonProperties } from "@kairo-ts/router";
+import type { KairoAddonProperties } from "@kairo-js/router";
 
 export const properties: KairoAddonProperties = {
     id: "kairo-datavault", //# // a-z & 0-9 - _

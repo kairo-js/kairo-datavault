@@ -1,4 +1,4 @@
-import { KairoUtils, type KairoCommand, type KairoResponse } from "@kairo-ts/router";
+import { KairoUtils, type KairoCommand, type KairoResponse } from "@kairo-js/router";
 import { DataVaultReceiver } from "./DataVaultReceiver";
 import { DynamicPropertyStorage } from "./DynamicPropertyStorage";
 

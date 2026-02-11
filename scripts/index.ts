@@ -1,4 +1,4 @@
-import { Kairo, KairoUtils, type KairoCommand, type KairoResponse } from "@kairo-ts/router";
+import { Kairo, type KairoCommand, type KairoResponse } from "@kairo-js/router";
 import { DataVaultManager } from "./Kairo-DataVault/DataVaultManager";
 import { properties } from "./properties";
 
