@@ -1,7 +1,7 @@
 {
     "name": "kairo-database",
     "version": "1.0.0-beta.5",
-    "description": "**Stable Script API** - @minecraft/server - 2.7.0",
+    "description": "**Stable Script API** - @minecraft/server - 2.9.0",
     "main": "index.js",
     "type": "module",
     "packageManager": "pnpm@10.31.0",
@@ -20,7 +20,7 @@
     "devDependencies": {
         "@kairo-js/build-tools": "1.0.0-beta.4",
         "@minecraft/common": "^1.2.0",
-        "@minecraft/server": "^2.7.0",
+        "@minecraft/server": "^2.9.0",
         "@minecraft/server-ui": "^2.0.0",
         "@types/node": "^24.12.0",
         "esbuild": "^0.27.3",
@@ -31,6 +31,6 @@
     },
     "dependencies": {
         "@kairo-js/properties": "1.2.1",
-        "@kairo-js/router": "1.0.0-beta.1"
+        "@kairo-js/router": "1.0.0-beta.5"
     }
 }
